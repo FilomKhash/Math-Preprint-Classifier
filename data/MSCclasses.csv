@@ -1,0 +1,538 @@
+,class,description
+0,00A, General and miscellaneous specic topics
+1,00B, Conference proceedings and collections of articles
+2,01A, History of mathematics and mathematicians
+3,03A, Philosophical aspects of logic and foundations
+4,03B, General logic
+5,03C, Model theory
+6,03D, Computability and recursion theory
+7,03E, Set theory
+8,03F, Proof theory and constructive mathematics
+9,03G, Algebraic logic
+10,03H, Nonstandard models 
+11,05A," Enumerative combinatorics fFor enumeration in graph theory, see 05C30 g"
+12,05B," Designs and congurations fFor applications of design theory, see 94C30 g"
+13,05C," Graph theory fFor computer science, see 68R10 g"
+14,05D, Extremal combinatorics
+15,05E, Algebraic combinatorics
+16,06A, Ordered sets
+17,06B, Lattices 
+18,06C," Modular lattices, complemented lattices"
+19,06D, Distributive lattices
+20,06E, Boolean algebras (Boolean rings) 
+21,06F, Ordered structures
+22,08A, Algebraic structures 
+23,08B, Varieties 
+24,08C, Other classes of algebras
+25,11A," Elementary number theory fFor analogues in number elds, see 11R04 g"
+26,11B, Sequences and sets
+27,11C, Polynomials and matrices
+28,11D, Diophantine equations 
+29,11E, Forms and linear algebraic groups 
+30,11F, Discontinuous groups and automorphic forms 
+31,11G, Arithmetic algebraic geometry (Diophantine geometry) 
+32,11H," Geometry of numbers fFor applications in coding theory, see 94B75 g"
+33,11J," Diophantine approximation, transcendental number theory "
+34,11K, Probabilistic theory: distribution modulo 1; metric theory of algorithms
+35,11L," Exponential sums and character sums fFor nite elds, see 11Txx g"
+36,11M, Zeta and L-functions: analytic theory
+37,11N, Multiplicative number theory
+38,11P, Additive number theory; partitions
+39,11R," Algebraic number theory: global elds fFor complex multiplication, see 11G15 g"
+40,11S, Algebraic number theory: local elds
+41,11T, Finite elds and commutative rings (number-theoretic aspects)
+42,11U, Connections of number theory and logic
+43,11Y," Computational number theory fFor software etc., see 11-04 g"
+44,11Z, Miscellaneous applications of number theory
+45,12D, Real and complex elds
+46,12E, General eld theory
+47,12F, Field extensions
+48,12G, Homological methods (eld theory)
+49,12H, Dierential and dierence algebra
+50,12J, Topological elds
+51,12K, Generalizations of elds
+52,12L, Connections between eld theory and logic
+53,13A, General commutative ring theory
+54,13B, Commutative ring extensions and related topics
+55,13C, Theory of modules and ideals in commutative rings
+56,13D," Homological methods in commutative ring theory fFor noncommutative rings,"
+57,13E," Chain conditions, niteness conditions in commutative ring theory"
+58,13F, Arithmetic rings and other special commutative rings
+59,13G, Integral domains
+60,13H, Local rings and semilocal rings
+61,13J, Topological rings and modules 
+62,13L, Applications of logic to commutative algebra 
+63,13M," Finite commutative rings fFor number-theoretic aspects, see 11Txx g"
+64,13N, Dierential algebra 
+65,13P, Computational aspects and applications of commutative rings 
+66,14A, Foundations of algebraic geometry
+67,14B, Local theory in algebraic geometry
+68,14C, Cycles and subschemes
+69,14D," Families, brations in algebraic geometry"
+70,14E, Birational geometry
+71,14F, (Co)homology theory in algebraic geometry 
+72,14G, Arithmetic problems in algebraic geometry; Diophantine geometry 
+73,14H, Curves in algebraic geometry
+74,14J," Surfaces and higher-dimensional varieties fFor analytic theory, see 32Jxx g"
+75,14K, Abelian varieties and schemes
+76,14L, Algebraic groups 
+77,14M, Special varieties
+78,14N, Projective and enumerative algebraic geometry 
+79,14P, Real algebraic and real-analytic geometry
+80,14Q," Computational aspects in algebraic geometry fFor software etc., see 14-04 g"
+81,14R, Ane geometry
+82,14T, Tropical geometry 
+83,15A, Basic linear algebra
+84,15B, Special matrices
+85,16B, General and miscellaneous
+86,16D," Modules, bimodules and ideals in associative algebras"
+87,16E," Homological methods in associative algebras fFor commutative rings, see"
+88,16G, Representation theory of associative rings and algebras
+89,16H," Associative algebras and orders fFor arithmetic aspects, see 11R52, 11R54,"
+90,16K, Division rings and semisimple Artin rings 
+91,16L, Local rings and generalizations
+92,16N, Radicals and radical properties of associative rings
+93,16P," Chain conditions, growth conditions, and other forms of niteness for associative"
+94,16R, Rings with polynomial identity
+95,16S, Associative rings and algebras arising under various constructions
+96,16T," Hopf algebras, quantum groups and related topics"
+97,16U, Conditions on elements
+98,16W, Associative rings and algebras with additional structure
+99,16Y," Generalizations fFor nonassociative rings, see 17-XX g"
+100,16Z," Computational aspects of associative rings fFor software etc., see 16-04 g"
+101,17A, General nonassociative rings
+102,17B," Lie algebras and Lie superalgebras fFor Lie groups, see 22Exx g"
+103,17C," Jordan algebras (algebras, triples and pairs)"
+104,17D, Other nonassociative rings and algebras
+105,18A, General theory of categories and functors
+106,18B, Special categories
+107,18C, Categories and theories
+108,18D, Categorical structures
+109,18E, Categorical algebra
+110,18F, Categories in geometry and topology
+111,18G," Homological algebra in category theory, derived categories and functors "
+112,18M, Monoidal categories and operads
+113,18N, Higher categories and homotopical algebra
+114,19A, Grothendieck groups and K0
+115,19B, Whitehead groups and K1
+116,19C, Steinberg groups and K2
+117,19D, Higher algebraic K-theory
+118,19E, K-theory in geometry
+119,19F, K-theory in number theory 
+120,19G, K-theory of forms 
+121,19J, Obstructions from topology
+122,19K, K-theory and operator algebras 
+123,19L, Topological K-theory 
+124,19M, Miscellaneous applications of K-theory
+125,20A, Foundations
+126,20B, Permutation groups
+127,20C," Representation theory of groups fFor representation rings and Burnside rings,"
+128,20D, Abstract nite groups
+129,20E, Structure and classication of innite or nite groups
+130,20F, Special aspects of innite or nite groups
+131,20G," Linear algebraic groups and related topics fFor arithmetic theory, see 11E57,"
+132,20H, Other groups of matrices 
+133,20J, Connections of group theory with homological algebra and category theory
+134,20K, Abelian groups
+135,20L, Groupoids (i.e. small categories in which all morphisms are isomorphisms) fFor
+136,20M, Semigroups
+137,20N, Other generalizations of groups
+138,20P, Probabilistic methods in group theory 
+139,22A, Topological and dierentiable algebraic systems fFor topological rings and
+140,22B, Locally compact abelian groups (LCA groups)
+141,22C, Compact groups
+142,22D, Locally compact groups and their algebras
+143,22E," Lie groups fFor the topology of Lie groups and homogeneous spaces, see 57Sxx,"
+144,22F, Noncompact transformation groups
+145,26A, Functions of one variable
+146,26B, Functions of several variables
+147,26C," Polynomials, rational functions in real analysis"
+148,26D," Inequalities in real analysis fFor maximal function inequalities, see 42B25; for"
+149,26E, Miscellaneous topics in real functions 
+150,28A, Classical measure theory
+151,28B," Set functions, measures and integrals with values in abstract spaces"
+152,28C, Set functions and measures on spaces with additional structure 
+153,28D, Measure-theoretic ergodic theory 
+154,28E, Miscellaneous topics in measure theory
+155,30A, General properties of functions of one complex variable
+156,30B, Series expansions of functions of one complex variable
+157,30C, Geometric function theory
+158,30D," Entire and meromorphic functions of one complex variable, and related topics"
+159,30E, Miscellaneous topics of analysis in the complex plane
+160,30F, Riemann surfaces
+161,30G, Generalized function theory
+162,30H, Spaces and algebras of analytic functions of one complex variable
+163,30J, Function theory on the disc
+164,30K, Universal holomorphic functions of one complex variable
+165,30L, Analysis on metric spaces
+166,31A, Two-dimensional potential theory
+167,31B, Higher-dimensional potential theory
+168,31C, Generalizations of potential theory
+169,31D, Axiomatic potential theory
+170,31E, Potential theory on fractals and metric spaces
+171,32A, Holomorphic functions of several complex variables
+172,32B, Local analytic geometry 
+173,32C, Analytic spaces
+174,32D, Analytic continuation
+175,32E, Holomorphic convexity
+176,32F, Geometric convexity in several complex variables
+177,32G, Deformations of analytic structures
+178,32H, Holomorphic mappings and correspondences
+179,32J," Compact analytic spaces fFor Riemann surfaces, see 14Hxx, 30Fxx; for algebraic"
+180,32K, Generalizations of analytic spaces
+181,32L, Holomorphic ber spaces 
+182,32M, Complex spaces with a group of automorphisms
+183,32N, Automorphic functions 
+184,32P, Non-Archimedean analysis 
+185,32Q, Complex manifolds
+186,32S, Complex singularities 
+187,32T, Pseudoconvex domains
+188,32U, Pluripotential theory
+189,32V, CR manifolds
+190,32W, Dierential operators in several variables
+191,33B, Elementary classical functions
+192,33C, Hypergeometric functions
+193,33D, Basic hypergeometric functions
+194,33E, Other special functions
+195,33F," Computational aspects of special functions fFor software etc., see 33-04 g"
+196,34A, General theory for ordinary dierential equations
+197,34B, Boundary value problems for ordinary dierential equations fFor ordinary dif-
+198,34C, Qualitative theory for ordinary dierential equations 
+199,34D, Stability theory for ordinary dierential equations 
+200,34E, Asymptotic theory for ordinary dierential equations
+201,34F, Ordinary dierential equations and systems with randomness 
+202,34G, Dierential equations in abstract spaces 
+203,34H, Control problems involving ordinary dierential equations 
+204,34K," Functional-dierential equations (including equations with delayed, advanced"
+205,34L, Ordinary dierential operators 
+206,34M, Ordinary dierential equations in the complex domain 
+207,34N, Dynamic equations on time scales or measure chains fFor real analysis on time
+208,35A, General topics in partial dierential equations
+209,35B, Qualitative properties of solutions to partial dierential equations
+210,35C, Representations of solutions to partial dierential equations
+211,35D, Generalized solutions to partial dierential equations
+212,35E, Partial dierential equations and systems of partial dierential equations with
+213,35F, General rst-order partial dierential equations and systems of rst-order par-
+214,35G, General higher-order partial dierential equations and systems of higher-order
+215,35H, Close-to-elliptic equations
+216,35J," Elliptic equations and elliptic systems fFor global analysis, analysis on manifolds,"
+217,35K," Parabolic equations and parabolic systems fFor global analysis, analysis on"
+218,35L," Hyperbolic equations and hyperbolic systems fFor global analysis, see 58J45 g"
+219,35M, Partial dierential equations of mixed type and mixed-type systems of partial
+220,35N, Overdetermined problems for partial dierential equations and systems of par-
+221,35P, Spectral theory and eigenvalue problems for partial dierential equations fFor
+222,35Q, Partial dierential equations of mathematical physics and other areas of appli-
+223,35R, Miscellaneous topics in partial dierential equations fFor equations on mani-
+224,35S, Pseudodierential operators and other generalizations of partial dierential op-
+225,37A, Ergodic theory 
+226,37B, Topological dynamics
+227,37C, Smooth dynamical systems: general theory 
+228,37D, Dynamical systems with hyperbolic behavior
+229,37E, Low-dimensional dynamical systems
+230,37F, Dynamical systems over complex numbers 
+231,37G, Local and nonlocal bifurcation theory for dynamical systems 
+232,37H, Random dynamical systems 
+233,37J, Dynamical aspects of nite-dimensional Hamiltonian and Lagrangian systems
+234,37K, Dynamical system aspects of innite-dimensional Hamiltonian and Lagrangian
+235,37L, Innite-dimensional dissipative dynamical systems 
+236,37M, Approximation methods and numerical treatment of dynamical systems fFor
+237,37N, Applications of dynamical systems
+238,37P, Arithmetic and non-Archimedean dynamical systems 
+239,39A," Dierence equations fFor dynamic equations on time scales, see 34N05; for"
+240,39B, Functional equations and inequalities 
+241,40A, Convergence and divergence of innite limiting processes
+242,40B, Multiple sequences and series
+243,40C, General summability methods
+244,40D, Direct theorems on summability
+245,40E, Inversion theorems
+246,40F, Absolute and strong summability 
+247,40G, Special methods of summability
+248,40H, Functional analytic methods in summability
+249,40J, Summability in abstract structures 
+250,65D, g
+251,41A, Approximations and expansions fFor approximation theory in the complex
+252,42A, Harmonic analysis in one variable
+253,42B," Harmonic analysis in several variables fFor automorphic theory, see mainly"
+254,42C, Nontrigonometric harmonic analysis
+255,43A," Abstract harmonic analysis fFor other analysis on topological and Lie groups,"
+256,44A," Integral transforms, operational calculus fFor fractional derivatives and inte-"
+257,45A, Linear integral equations
+258,45B, Fredholm integral equations
+259,45C, Eigenvalue problems for integral equations 
+260,45D, Volterra integral equations 
+261,45E, Singular integral equations 
+262,45F, Systems of linear integral equations
+263,45G, Nonlinear integral equations 
+264,45H, Integral equations with miscellaneous special kernels 
+265,45J, Integro-ordinary dierential equations 
+266,45K, Integro-partial dierential equations 
+267,45L, Theoretical approximation of solutions to integral equations fFor numerical
+268,45M, Qualitative behavior of solutions to integral equations
+269,45N," Abstract integral equations, integral equations in abstract spaces"
+270,45P, Integral operators 
+271,45Q, Inverse problems for integral equations
+272,45R, Random integral equations 
+273,46A," Topological linear spaces and related structures fFor function spaces, see"
+274,46E, g
+275,46B," Normed linear spaces and Banach spaces; Banach lattices fFor function spaces,"
+276,46C," Inner product spaces and their generalizations, Hilbert spaces fFor function"
+277,46E, Linear function spaces and their duals 
+278,46F," Distributions, generalized functions, distribution spaces "
+279,46G," Measures, integration, derivative, holomorphy (all involving innite-"
+280,46H," Topological algebras, normed rings and algebras, Banach algebras fFor group"
+281,46J, Commutative Banach algebras and commutative topological algebras 
+282,46K, Topological (rings and) algebras with an involution 
+283,46L," Selfadjoint operator algebras ( C-algebras, von Neumann ( W-) algebras, etc.)"
+284,46M, Methods of category theory in functional analysis 
+285,46N, Miscellaneous applications of functional analysis 
+286,46S, Other (nonclassical) types of functional analysis 
+287,46T, Nonlinear functional analysis 
+288,47A, General theory of linear operators
+289,47B, Special classes of linear operators
+290,47C, Individual linear operators as elements of algebraic systems
+291,47D," Groups and semigroups of linear operators, their generalizations and applica-"
+292,47E, Ordinary dierential operators 
+293,47F, Partial dierential operators 
+294,47G," Integral, integro-dierential, and pseudodierential operators "
+295,47H," Nonlinear operators and their properties fFor global and geometric aspects,"
+296,47J, Equations and inequalities involving nonlinear operators 
+297,47L, Linear spaces and algebras of operators 
+298,47N, Miscellaneous applications of operator theory 
+299,47S, Other (nonclassical) types of operator theory 
+300,49J, Existence theories in calculus of variations and optimal control
+301,49K, Optimality conditions
+302,49L, Hamilton-Jacobi theories 
+303,49M, Numerical methods in optimal control 
+304,49N, Miscellaneous topics in calculus of variations and optimal control
+305,49Q, Manifolds and measure-geometric topics 
+306,49R, Variational methods for eigenvalues of operators 
+307,49S, Variational principles of physics 
+308,51A, Linear incidence geometry
+309,51B, Nonlinear incidence geometry
+310,51C," Ring geometry (Hjelmslev, Barbilian, etc.)"
+311,51D, Geometric closure systems
+312,51E, Finite geometry and special incidence structures
+313,51F, Metric geometry
+314,51G," Ordered geometries (ordered incidence structures, etc.)"
+315,51H, Topological geometry
+316,51J, Incidence groups
+317,51K, Distance geometry
+318,51L, Geometric order structures 
+319,51M, Real and complex geometry
+320,51N, Analytic and descriptive geometry
+321,51P, Classical or axiomatic geometry and physics 
+322,52A, General convexity
+323,52B, Polytopes and polyhedra
+324,52C, Discrete geometry
+325,53A, Classical dierential geometry
+326,53B, Local dierential geometry
+327,53C, Global dierential geometry 
+328,53D," Symplectic geometry, contact geometry "
+329,53E, Geometric evolution equations
+330,53Z, Applications of dierential geometry to sciences and engineering
+331,54A, Generalities in topology
+332,54B, Basic constructions in general topology
+333,54C, Maps and general types of topological spaces dened by maps
+334,54D, Fairly general properties of topological spaces
+335,54E, Topological spaces with richer structures
+336,54F, Special properties of topological spaces
+337,54G, Peculiar topological spaces
+338,54H," Connections of general topology with other structures, applications"
+339,54J, Nonstandard topology 
+340,55M, Classical topics in algebraic topology fFor the topology of Euclidean spaces
+341,55N, Homology and cohomology theories in algebraic topology fFor homology and
+342,55P," Homotopy theory fFor simple homotopy type, see 57Q10 g"
+343,55Q, Homotopy groups
+344,55R, Fiber spaces and bundles in algebraic topology 
+345,55S, Operations and obstructions in algebraic topology
+346,55T, Spectral sequences in algebraic topology 
+347,55U, Applied homological algebra and category theory in algebraic topology 
+348,32Q, g
+349,57K, Low-dimensional topology in specic dimensions
+350,57M, General low-dimensional topology
+351,57N, Topological manifolds
+352,57P, Generalized manifolds 
+353,57Q, PL-topology
+354,57R," Dierential topology fFor foundational questions of dierentiable manifolds,"
+355,57S, Topological transformation groups 
+356,57T, Homology and homotopy of topological groups and related structures
+357,57Z, Relations of manifolds and cell complexes with science and engineering
+358,58A, General theory of dierentiable manifolds 
+359,58B, Innite-dimensional manifolds
+360,58C, Calculus on manifolds; nonlinear operators 
+361,58D, Spaces and manifolds of mappings (including nonlinear versions of 46Exx) 
+362,58E, Variational problems in innite-dimensional spaces
+363,58H," Pseudogroups, dierentiable groupoids and general structures on manifolds"
+364,58J, Partial dierential equations on manifolds; dierential operators 
+365,58K, Theory of singularities and catastrophe theory 
+366,58Z, Applications of global analysis to the sciences
+367,60A, Foundations of probability theory
+368,60B, Probability theory on algebraic and topological structures
+369,60C, Combinatorial probability
+370,60D, Geometric probability and stochastic geometry 
+371,60E, Distribution theory 
+372,60F, Limit theorems in probability theory 
+373,60G, Stochastic processes
+374,60H, Stochastic analysis 
+375,60J, Markov processes
+376,60K, Special processes
+377,60L, Rough analysis
+378,62A, Foundational topics in statistics
+379,62B, Suciency and information
+380,62C, Statistical decision theory 
+381,62D, Statistical sampling theory and related topics
+382,62E, Statistical distribution theory 
+383,62F, Parametric inference
+384,62G, Nonparametric inference
+385,62H, Multivariate analysis 
+386,62J," Linear inference, regression"
+387,62K, Design of statistical experiments 
+388,62L, Sequential statistical methods
+389,62M, Inference from stochastic processes
+390,62N, Survival analysis and censored data
+391,62P, Applications of statistics 
+392,62Q, Statistical tables
+393,62R, Statistics on algebraic and topological structures
+394,65A, Tables in numerical analysis
+395,65B, Acceleration of convergence in numerical analysis
+396,65C," Probabilistic methods, stochastic dierential equations"
+397,65D, Numerical approximation and computational geometry (primarily algorithms)
+398,65E," Numerical methods in complex analysis (potential theory, etc.)"
+399,65F, Numerical linear algebra
+400,65G, Error analysis and interval analysis
+401,65H, Nonlinear algebraic or transcendental equations
+402,65J, Numerical analysis in abstract spaces
+403,65K," Numerical methods for mathematical programming, optimization and varia-"
+404,65L, Numerical methods for ordinary dierential equations
+405,65M," Numerical methods for partial dierential equations, initial value and time-"
+406,65N," Numerical methods for partial dierential equations, boundary value problems"
+407,65P, Numerical problems in dynamical systems 
+408,65Q," Numerical methods for dierence and functional equations, recurrence relations"
+409,65R," Numerical methods for integral equations, integral transforms"
+410,65S, Graphical methods in numerical analysis
+411,65T, Numerical methods in Fourier analysis
+412,65Y, Computer aspects of numerical algorithms
+413,65Z, Applications to the sciences
+414,68M, Computer system organization
+415,68N, Theory of software
+416,68P, Theory of data
+417,68Q, Theory of computing
+418,68R, Discrete mathematics in relation to computer science
+419,68T, Articial intelligence
+420,68U, Computing methodologies and applications
+421,68V, Computer science support for mathematical research and practice
+422,68W," Algorithms in computer science fFor numerical algorithms, see 65-XX; for"
+423,70A," Axiomatics, foundations"
+424,70B, Kinematics 
+425,70C, Statics
+426,70E, Dynamics of a rigid body and of multibody systems
+427,70F," Dynamics of a system of particles, including celestial mechanics"
+428,70G," General models, approaches, and methods in mechanics of particles and systems"
+429,70H, Hamiltonian and Lagrangian mechanics 
+430,70J, Linear vibration theory
+431,70K, Nonlinear dynamics in mechanics 
+432,70L, Random and stochastic aspects of the mechanics of particles and systems
+433,70M, Orbital mechanics
+434,70P," Variable mass, rockets"
+435,70Q, Control of mechanical systems 
+436,70S, Classical eld theories 
+437,74A," Generalities, axiomatics, foundations of continuum mechanics of solids"
+438,74B, Elastic materials
+439,74C," Plastic materials, materials of stress-rate and internal-variable type"
+440,74D," Materials of strain-rate type and history type, other materials with memory"
+441,74E, Material properties given special treatment
+442,74F, Coupling of solid mechanics with other eects
+443,74G, Equilibrium (steady-state) problems in solid mechanics
+444,74H, Dynamical problems in solid mechanics
+445,74J, Waves in solid mechanics
+446,74K," Thin bodies, structures"
+447,74L, Special subelds of solid mechanics
+448,74M, Special kinds of problems in solid mechanics
+449,74N, Phase transformations in solids 
+450,74P, Optimization problems in solid mechanics 
+451,74Q," Homogenization, determination of eective properties in solid mechanics"
+452,74R, Fracture and damage
+453,74S, Numerical and other methods in solid mechanics 
+454,76A," Foundations, constitutive equations, rheology, hydrodynamical models of non-"
+455,76B," Incompressible inviscid uids"
+456,76D," Incompressible viscous uids"
+457,76E, Hydrodynamic stability
+458,76F, Turbulence 
+459,76G," General aerodynamics and subsonic ows"
+460,76H," Transonic ows"
+461,76J," Supersonic ows"
+462,76K," Hypersonic ows"
+463,76L," Shock waves and blast waves in uid mechanics "
+464,76M," Basic methods in uid mechanics "
+465,76N," Compressible uids and gas dynamics"
+466,76P," Rareed gas ows, Boltzmann equation in uid mechanics "
+467,76Q, Hydro- and aero-acoustics
+468,76R, Diusion and convection
+469,76S, Flows in porous media; ltration; seepage
+470,76T," Multiphase and multicomponent ows"
+471,76U," Rotating uids"
+472,76V," Reaction eects in ows "
+473,76W, Magnetohydrodynamics and electrohydrodynamics
+474,76X," Ionized gas ow in electromagnetic elds; plasmic ow "
+475,76Y, Quantum hydrodynamics and relativistic hydrodynamics 
+476,76Z," Biological uid mechanics "
+477,78A, General topics in optics and electromagnetic theory
+478,78M, Basic methods for problems in optics and electromagnetic theory 
+479,80A, Thermodynamics and heat transfer
+480,80M, Basic methods in thermodynamics and heat transfer 
+481,81P," Foundations, quantum information and its processing, quantum axioms, and"
+482,81Q, General mathematical topics and methods in quantum theory
+483,81R, Groups and algebras in quantum theory
+484,81S, General quantum mechanics and problems of quantization
+485,81T, Quantum eld theory; related classical eld theories 
+486,81U, Quantum scattering theory 
+487,81V, Applications of quantum theory to specic physical systems
+488,82B, Equilibrium statistical mechanics
+489,82C, Time-dependent statistical mechanics (dynamic and nonequilibrium)
+490,82D, Applications of statistical mechanics to specic types of physical systems
+491,82M, Basic methods in statistical mechanics 
+492,83A, Special relativity
+493,83B, Observational and experimental questions in relativity and gravitational theory
+494,83C, General relativity
+495,83D," Relativistic gravitational theories other than Einstein's, including asymmetric"
+496,83E," Unied, higher-dimensional and super eld theories"
+497,83F," Relativistic cosmology fFor astrophysical cosmology, see 85A40 g"
+498,85A," Astronomy and astrophysics fFor celestial mechanics, see 70F15 g"
+499,86A, Geophysics 
+500,90B, Operations research and management science
+501,90C," Mathematical programming fFor numerical methods, see also 49Mxx, 65Kxx g"
+502,91A, Game theory
+503,91B," Mathematical economics fFor econometrics, see 62P20 g"
+504,91C," Social and behavioral sciences: general topics fFor statistics, see 62P25 g"
+505,91D, Mathematical sociology (including anthropology)
+506,91E," Mathematical psychology fFor psychometrics, see 62P15 g"
+507,91F, Other social and behavioral sciences (mathematical treatment)
+508,91G," Actuarial science and mathematical nance fFor statistics, see 62P05 g"
+509,92B, Mathematical biology in general
+510,92C," Physiological, cellular and medical topics"
+511,92D, Genetics and population dynamics
+512,92E," Chemistry fFor biochemistry, see 92C40 g"
+513,92F, Other natural sciences (mathematical treatment)
+514,93A, General systems theory
+515,93B," Controllability, observability, and system structure"
+516,93C, Model systems in control theory
+517,93D, Stability of control systems
+518,93E, Stochastic systems and control
+519,94A," Communication, information"
+520,94B, Theory of error-correcting codes and error-detecting codes
+521,94C," Circuits, networks "
+522,94D, Miscellaneous topics in information and communication theory
+523,97A, History and society (aspects of mathematics education)
+524,97B, Educational policy and systems
+525,97C," Psychology of mathematics education, research in mathematics education"
+526,97D, Education and instruction in mathematics
+527,97E, Education of foundations of mathematics
+528,97F, Education of arithmetic and number theory
+529,97G, Geometry education
+530,97H, Algebra education
+531,97I, Analysis education
+532,97K," Education of combinatorics, graph theory, probability theory, and statistics"
+533,97M, Education of mathematical modeling and applications of mathematics
+534,97N, Education of numerical mathematics
+535,97P, Computer science (educational aspects)
+536,97U, Educational material and media and educational technology in mathematics
