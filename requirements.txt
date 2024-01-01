@@ -1,0 +1,14 @@
+arxiv
+iterative-stratification
+json
+gzip
+matplotlib
+nltk
+numpy
+pandas
+pickle
+PyPDF2
+scipy
+sklearn 
+tensorflow
+unidecode
