@@ -1,5 +1,3 @@
-print('Importing necessary libraries...\n')
-
 import numpy as np
 import pandas as pd
 import pickle as pkl
@@ -29,10 +27,18 @@ class math_classifier:
     The main method is math_classifier.predict which:
         1) based on user's preference, either scrapes math papers (five preprints by default) from arXiv randomly, 
         or receives an arXiv identifier, 
-        or a string which should be concatenation of the title and the abstract of a paper;
-        2) applies various models to the cleaned text data (obtained from _text_preprocessing method);
-        3) returns predicted probabilities and labels in the form of a dictionary of the form:
+        or a string which should be concatenation of the title and the abstract of a math-related paper;
+        2) applies various models to the cleaned text data (which itself is obtained from _text_preprocessing method);
+        3) returns predicted probabilities and labels in the form of a dictionary:
         {'3-character MSC':[(14L,0.35)...],'2-character MSC':[(15,0.2),...],'Primary Category':(math.AG,0.77)}.
+        
+        Caution) The code is written with Mathematics Subject Classification as of 2020 and arXiv identifier scheme as of 2023 in mind.
+        Caution) It is on the user to make sure the identifier is valid, otherwise HTTP error may be encountered. 
+                    (current identifier format) arXiv:YYMM.number or arXiv:YYMM.numbervV or YYMM.number or YYMM.numbervV    
+                    (pre-2007 format) arXiv:<Archive>.<Subject Class>/YYMMnumber or <Archive>.<Subject Class>/YYMMnumber
+                                      arXiv:<Archive>.<Subject Class>/YYMMnumbervV or <Archive>.<Subject Class>/YYMMnumbervV
+        Caution) The probability for 2-character MSC classes should be interpreted as a lower bound. 
+        Caution) The model for the primary arXiv category prediction is trained on data from math and math-physics archives.
     '''
     #Loading English stop words and some corpus-specific stop words as a class attribute
     __STOPWORDS = list(stopwords.words('english'))+['show','shows','showing','showed','prove','proves','proved','proving','use','uses','using','result','results','resulting','obtain','let',
@@ -102,15 +108,16 @@ class math_classifier:
         with gzip.open(tokenizer_path,'rb') as file:
             self.__tokenizer=pkl.load(file)
         
-        #Loading the trained classifier which outputs the probabilities for primary math categories
+        #Loading the trained neural net classifier which outputs the probabilities for primary math categories
         assert os.path.exists(clf_nn_path), f"[Error] {clf_nn_path} does not exist."
         with gzip.open(clf_nn_path,'rb') as file:
             self.__clf_nn=pkl.load(file)
             
-    ################################## END INIT ########################################################    
-
-
-    def predict(self,n_random=None,text=None,identifier=None,print_url=True):  
+    ################################## END INIT ##########################################################    
+    
+    
+    ################################## The key method ####################################################
+    def predict(self,n_random=None,text=None,identifier=None):  
         
         #Sanity check regarding the inputs
         if text is not None:
@@ -122,9 +129,9 @@ class math_classifier:
         elif identifier is not None: 
             flag='identifier'
             if n_random is not None:
-                warnings.warn("More than one input, only the identifier input will be considered.")
+                warnings.warn("More than one input, only the arXiv identifier input will be considered.")
             if not isinstance(identifier,str):
-                raise ValueError("The identifier input should be a string.")
+                raise ValueError("The arXiv identifier input should be a string.")
         elif n_random is not None:
             flag='random'
             if not isinstance(n_random,int):
@@ -136,15 +143,52 @@ class math_classifier:
         else:
             flag='random'
             n_random=5
-            
+        
+        #Based on flag which determines the input type, we compute the output.
         if flag=='text':
-            cleaned_text=self._text_preprocessing(text)                      #Preprocessing     
-            return self.__predict_from_cleaned_text(text)
-            
-   
+            cleaned_text=self._text_preprocessing(text)     #Preprocessing     
+            return self.__predict_from_cleaned_text(cleaned_text)
+        
+        if flag=='identifier':
+            identifier=identifier.removeprefix('arXiv:')    #Remove the prefix if necessary
+            client = arxiv.Client()                         #Construct the default API client.
+            search = arxiv.Search(id_list=[identifier])
+            results = client.results(search)                #This is an iterable.                               
+            try:
+                paper=next(results)                         #HTTP error may be encountered if the identifier is not valid.
+                scraped_text=paper.title+" "+paper.summary
+                cleaned_text=self._text_preprocessing(scraped_text)
+                return self.__predict_from_cleaned_text(cleaned_text)
+            except:                                         #To catch cases where the iterable is empty.
+                raise ValueError("The provided identifier didn't match any arXiv preprint, make sure it is valid.")
+                
+        if flag=='random':    
+            client = arxiv.Client()                     #Construct the default API client.
+            #We search for the keyword math, and we scrape 10+the number specified by the user.
+            #Because we may need to drop some of them which have nothing to do with the math archive.
+            search = arxiv.Search(query = "math",max_results = 10+n_random,sort_by = arxiv.SortCriterion.SubmittedDate)
+            results = client.results(search)            #This is an iterable.    
+            n_outputted=0
+            for paper in results:
+                if n_outputted>=n_random:
+                    break
+                if len(set(paper.categories).intersection(set(self.__Cat_list)))==0:
+                    continue                            #The scraped paper is probably not math related.
+                else:
+                    print(f'Paper {n_outputted+1}: {paper.entry_id}')
+                    scraped_text=paper.title+" "+paper.summary
+                    cleaned_text=self._text_preprocessing(scraped_text)
+                    print(self.__predict_from_cleaned_text(cleaned_text),'\n')
+                    n_outputted+=1
+            return
 
-
+        
+    ################################## Auxiliary #########################################################         
     def __predict_from_cleaned_text(self,cleaned_text):    
+        
+        '''
+        Receives the preprocessed text and returns the labels and their probabilities.
+        '''
         
         vectorized=self.__vectorizer.transform([cleaned_text])               #A sparse matrix
         
@@ -159,20 +203,18 @@ class math_classifier:
         MSC_simplified_proba_pred=self.__clf_MSC_simplified.predict_proba(vectorized) #numpy array of size 1*(the number of simplified MSC classes)
         
         nn_input=self.__padder(self.__tokenizer.texts_to_sequences([cleaned_text])) #What the neural net receives as input. 
-        Cat_proba_pred=self.__clf_nn.predict(nn_input,verbose=0)                    #numpy array of size 1*(the number of primary categories of math archive)    
+        Cat_proba_pred=self.__clf_nn.predict(nn_input,verbose=0)                    #numpy array of size 1*(the number of math-related primary categories)    
         
         return self.__build_output(MSC_label_pred,MSC_proba_pred,
                 MSC_simplified_label_pred,MSC_simplified_proba_pred,
                 Cat_proba_pred)
 
         
-    #For padding sequences with parameter as set for training the neural network (the MSC prediction notebook)
+    #For padding sequences with parameter as set for training the neural network (the Archive Primary Category Prediction notebook)
     @staticmethod
     def __padder(X):  
         return pad_sequences(X, maxlen=100, padding='post')
         
-    
-    
     
     def __build_output(self,
                       MSC_label_pred,MSC_proba_pred,
@@ -183,16 +225,16 @@ class math_classifier:
         {'3-character MSC':[(14L,0.35)...],'2-character MSC':[(15,0.2),...],'Primary Category':(math.AG,0.77)}
         consisting of predicted labels and their associated probabilities obtained from
         classifiers of 3-character and 2-character MSC classes (multi-label tasks), 
-        or the classifier of the primary arXiv category (a multi-class task). 
+        and from the classifier of the primary arXiv category (a multi-class task). 
         (In the former two, when no class is predicted, a single class with the highest probability will be picked.)
         '''
         #Initializing
         output_dict={}
         
         #For the 3-character MSC prediction task (multi-label)
-        indices=np.unique(np.where(MSC_label_pred[0]==1)).tolist()
         output_dict['3-character MSC']=[]
-        if len(indices)==0:
+        indices=np.unique(np.where(MSC_label_pred[0]==1)).tolist()
+        if len(indices)==0:                                    #The case where the multi-label classifiers returns no label.
             indices=[np.argmax(MSC_proba_pred[0])]
         for index in indices:
             output_dict['3-character MSC']+=[(self.__MSC_list[index],round(MSC_proba_pred[0][index],2))]
@@ -200,7 +242,7 @@ class math_classifier:
         #For the 2-character MSC prediction task (multi-label)
         output_dict['2-character MSC']=[]
         indices=np.unique(np.where(MSC_simplified_label_pred[0]==1)).tolist()
-        if len(indices)==0:
+        if len(indices)==0:                                    #The case where the multi-label classifiers returns no label.
             indices=[np.argmax(MSC_simplified_proba_pred[0])]
         for index in indices:
             output_dict['2-character MSC']+=[(self.__MSC_simplified_list[index],round(MSC_simplified_proba_pred[0][index],2))]
@@ -211,12 +253,8 @@ class math_classifier:
         
         return output_dict
          
-            
-                
-                
-    
-    
-    ################################ Text preprocessor and its smaller constituent functions ###############
+       
+    ################################ Text preprocessor and its smaller constituent functions #############
     @classmethod
     def _text_preprocessing(cls,string):
         string=cls.__remove_math(string)
@@ -318,23 +356,5 @@ class math_classifier:
         string=re.sub(' {2,}',' ',string)
         string.strip(' ')
         return string
-
-
-
-
-
-
-
-
-
-# if __name__=="__main__":
     
-#     print('Loading models...\n')
-#     a=math_classifier()
-    
-#     print('Scraping random articles:')
-#     for i in range(5):
-#         print(a.predict(print_url=True))
-        
-        
-        
+    ###################################################################################################### 
