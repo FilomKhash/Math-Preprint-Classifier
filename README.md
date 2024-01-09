@@ -11,11 +11,11 @@ The project involved:
 ### Usage
 The end-to-end classifier is an instance of the `math_classifier` class coded in `end_to_end.py`.
 
-![image.png](attachment:image.png)
+![alt text](https://github.com/FilomKhash/Math-Preprint-Classifier/blob/main/image1.png)
 
 Upon instantiation, saved models for individual tasks (predicting 2 or 3-character MSC classes or predicting the primary category) are loaded from the `models` folder along with the names of their variables from the `data` folder. The `predict` method can receive raw text data, i.e. the abstract and/or the title of a math-related paper, an [arXiv identifier](https://info.arxiv.org/help/arxiv_identifier.html), or a number for how many papers to scrape. It outputs the predicted MSC classes and the primary category along with their probabilities.
 
-![image-2.png](attachment:image-2.png)
+![alt text](https://github.com/FilomKhash/Math-Preprint-Classifier/blob/main/image2.png)
 
 ### Examples
 
