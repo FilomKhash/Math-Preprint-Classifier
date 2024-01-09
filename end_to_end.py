@@ -9,11 +9,15 @@ from nltk.stem.snowball import SnowballStemmer
 from unidecode import unidecode
 import re
 import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'               #Disabling warnings  
+                                                       #https://stackoverflow.com/a/42121886/13036105
 from scipy import sparse
 import warnings
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-
-
+import tensorflow
+import logging
+tensorflow.get_logger().setLevel(logging.ERROR)        #Disabling warnings
+                                                       #https://stackoverflow.com/a/55142079/13036105
 
 #Importing the classes we defined before in which some of our saved models come.
 #https://stackoverflow.com/questions/27732354/unable-to-load-files-using-pickle-and-multiple-modules
