@@ -11,11 +11,11 @@ The project involved:
 ### Usage
 The end-to-end classifier is an instance of the `math_classifier` class coded in `end_to_end.py`.
 
-![alt text](https://github.com/FilomKhash/Math-Preprint-Classifier/blob/main/image1.png)
+![alt text](https://github.com/FilomKhash/Math-Preprint-Classifier/blob/main/images/image1.png)
 
 Upon instantiation, saved models for individual tasks (predicting 2 or 3-character MSC classes or predicting the primary category) are loaded from the `models` folder along with the names of the variables they were trained on. The `predict` method can receive raw text data, i.e. the title and/or the abstract of a math-related paper, an [arXiv identifier](https://info.arxiv.org/help/arxiv_identifier.html), or a number for how many papers to scrape. It outputs the predicted MSC classes and the primary category along with their probabilities.
 
-![alt text](https://github.com/FilomKhash/Math-Preprint-Classifier/blob/main/image2.png)
+![alt text](https://github.com/FilomKhash/Math-Preprint-Classifier/blob/main/images/image2.png)
 
 ### Examples
 
@@ -23,7 +23,11 @@ Check notebook `example_jupyter.ipynb`. Alternatively, `example_cmd.py` can be r
 
 ### Data Collection and Cleaning
 
-The notebook `Scarping and Cleaning the Data.ipynb` involves a step-by-step procedure in which numerous arXiv preprints associated with at least one MSC class are gathered; their primary category and MSC classes are recorded for multi-class and multi-label classification tasks respectively; and their text data (title+abstract) is cleaned (removing punctuations, special characters, stop words, math environment etc.). The final dataset has more than 160,000 entries and can be found in the folder `data`.  
+The notebook `Scarping and Cleaning the Data.ipynb` involves a step-by-step procedure in which numerous arXiv preprints associated with at least one MSC class are gathered; their primary category and MSC classes are recorded as target variables for multi-class and multi-label classification tasks respectively; and their text data (title+abstract) is cleaned (removing punctuations, special characters, stop words, math environment etc.). The final dataset has more than 160,000 entries and can be found in the folder `data`.  
+
+Frequencies of different types of target variables across the data:
+
+![alt text](https://github.com/FilomKhash/Math-Preprint-Classifier/blob/main/images/image3.png)
 
 ### Trained Models
 
