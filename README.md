@@ -31,7 +31,7 @@ Frequencies of different types of target variables across the data:
 
 ### Trained Models
 
-Based on the scraped data, in `MSC Prediction.ipynb` we train, and calibrate a support vector machine for the following multi-label text classification task:
+Based on the scraped data, in `MSC Prediction.ipynb` we train, and calibrate a support vector machine (SVM) for the following multi-label text classification task:
 
 $\hspace{3cm}$  `cleaned_text` $\mapsto$ 3-character MSC classes (e.g. 46L, 57M, 57R) $\hspace{1cm}$  (~500 labels, trained on ~100,000 data points).
 
@@ -40,17 +40,19 @@ The coarser target variable, 2-character MSC classes, can then be predicted too:
 $\hspace{3cm}$  `cleaned_text` $\mapsto$ 3-character MSC classes (e.g. 46L, 57M, 57R) 
 $\mapsto$ 2-character MSC classes (e.g. 46, 57) $\hspace{1cm}$  (~60 labels).
 
-As for the primary arXiv category of a math-related paper, in `Math Archive Primary Category Prediction.ipynb` we train a convolutional neural net for this multi-class task:
+As for the primary arXiv category of a math-related paper, in `Math Archive Primary Category Prediction.ipynb` we train a convolutional neural net (CNN) for this multi-class task:
 
 $\hspace{3cm}$  `cleaned_text`  $\mapsto$ the primary arXiv category (e.g. `math.AG`) $\hspace{1cm}$  (~30 labels, trained on ~120,000 data points).
 
+We further experiment with the transformer architecture in `Math Archive Prediction Tasks with Transformers.ipynb` for the same tasks, data and data splits. The performance is slightly better for the primary arXiv category prediction task while the original SVM model turned out to be superior when it comes to the MSC class prediction task. 
+
 The performances over the test sets are as follows<a name="cite_ref-a"></a>[<sup>*</sup>](#cite_note-a):
 
-|    Target Variable(s)                  | Weighted $F_1$ Score |  Jaccard Score/Accuracy         |
-| -------------------------------------- | -------------------- | ------------------------------- |
-|3-character MSC classes (~500 labels)   | 50.18%               | 39.03%                          |
-|2-character MSC classes (~60 labels)    | 65.02%               | 56.32%                          |
-|the primary arXiv category (~30 labels) | 65.80%               | 65.52%                          |
+|    Target Variable(s)                  |  Model    | Weighted $F_1$ Score |  Jaccard Score/Accuracy         |
+| -------------------------------------- |-----------| -------------------- | ------------------------------- |
+|3-character MSC classes (~500 labels)   |SVM        | 50.18%               | 39.03%                          |
+|2-character MSC classes (~60 labels)    |SVM        | 65.02%               | 56.32%                          |
+|the primary arXiv category (~30 labels) |Transformer| 66.07%               | 66.68%                          |
+|the primary arXiv category (~30 labels) |CNN        | 66.0%                | 65.74%                          |
 
-
-<a name="cite_note-a"></a>[*](#cite_ref-a) The metrics were computed on test sets with ~40,000 data points, and all are recorded as percentages. On the first two rows, the task is multi-label and the average of the Jaccard similarity over test instances is used while on the last row the accuracy is recorded for the multi-class task.   
+<a name="cite_note-a"></a>[*](#cite_ref-a) The metrics were computed on test sets with ~40,000 data points, and all are recorded as percentages. On the first two rows, the task is multi-label and the average of the Jaccard similarity over test instances is used while on the last two rows the accuracy is recorded for the multi-class task.   
