@@ -13,8 +13,13 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'               #Disabling warnings
                                                        #https://stackoverflow.com/a/42121886/13036105
 from scipy import sparse
 import warnings
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+import keras
+from keras_preprocessing.text import tokenizer_from_json                                           
+#Loading a tokenizer saved as json. https://stackoverflow.com/questions/45735070/keras-text-preprocessing-saving-tokenizer-object-to-file-for-scoring
+                                                       
 import tensorflow
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 import logging
 tensorflow.get_logger().setLevel(logging.ERROR)        #Disabling warnings
                                                        #https://stackoverflow.com/a/55142079/13036105
@@ -23,6 +28,7 @@ tensorflow.get_logger().setLevel(logging.ERROR)        #Disabling warnings
 #https://stackoverflow.com/questions/27732354/unable-to-load-files-using-pickle-and-multiple-modules
 from Concat import ConcatModels
 from Reduction import clf_reduction
+from load_transformer import LoadedTransformer
 
 
 class math_classifier:
@@ -43,6 +49,7 @@ class math_classifier:
                                       arXiv:<Archive>.<Subject Class>/YYMMnumbervV or <Archive>.<Subject Class>/YYMMnumbervV
         Caution) The probability for 2-character MSC classes should be interpreted as a lower bound. 
         Caution) The model for the primary arXiv category prediction is trained on data from math and math-physics archives.
+        Caution) Two neural network models trained for the primary arXiv category prediction, a convolutional nn and a transformer, the latter is used by default. 
     '''
     #Loading English stop words and some corpus-specific stop words as a class attribute
     __STOPWORDS = list(stopwords.words('english'))+['show','shows','showing','showed','prove','proves','proved','proving','use','uses','using','result','results','resulting','obtain','let',
@@ -62,15 +69,20 @@ class math_classifier:
                  MSC_path='./models/MSC_list.json', MSC_simplified_path='./models/MSC_list_simplified.json', 
                  Cat_path='./models/Cat_list.json',
                  clf_MSC_path='./models/clf_MSC.gz', clf_MSC_calibrated_path='./models/clf_MSC_calibrated.gz', 
-                 clf_MSC_simplified_path='./models/clf_MSC_simplified.gz',
-                 vectorizer_path='./models/vectorizer.gz', tokenizer_path='./models/tokenizer.gz',
-                 clf_nn_path='./models/clf_nn.gz'):  
+                 three_to_two_transform_path='./models/3MSC_2MSC.npy',
+                 vectorizer_path='./models/vectorizer.gz', tokenizer_path='./models/tokenizer.json',
+                 clf_transformer_path='./models/clf_transformer.weights.h5', use_transformer=True,
+                 clf_cnn_path='./models/clf_nn.keras'):  
       
         assert all(isinstance(item,str) for item in [MSC_path,MSC_simplified_path,Cat_path,
                                                      clf_MSC_path,clf_MSC_calibrated_path,
-                                                     clf_MSC_simplified_path,
-                                                     vectorizer_path,tokenizer_path,
-                                                     clf_nn_path]), f"[Error] {type(self).__name__} only accepts string inputs which should describe paths."
+                                                     three_to_two_transform_path,
+                                                     vectorizer_path,tokenizer_path]), f"[Error] {type(self).__name__} only accepts string inputs which should describe paths."
+        assert type(use_transformer)==type(True), "[Error] The use_transformer flag should be Boolean."
+        if use_transformer:
+            assert isinstance(clf_transformer_path,str), "[Error] A string should be provided as a path to a transformer model."
+        else: 
+            assert isinstance(clf_cnn_path,str), "[Error] A string should be provided as a path to a convolutional neural net."
     
         #Loading the list of (3-character) MSC classes (variable names for __clf_MSC and __clf_MSC_calibrated)
         assert os.path.exists(MSC_path), f"[Error] {MSC_path} does not exist."
@@ -97,10 +109,12 @@ class math_classifier:
         with gzip.open(clf_MSC_calibrated_path,'rb') as file:
             self.__clf_MSC_calibrated=pkl.load(file)
         
-        #Loading the trained classifier which outputs simplified MSC classes and their probabilities
-        assert os.path.exists(clf_MSC_simplified_path), f"[Error] {clf_MSC_simplified_path} does not exist."
-        with gzip.open(clf_MSC_simplified_path,'rb') as file:
-            self.__clf_MSC_simplified=pkl.load(file)
+        #Loading the transformation mapping (3-character) MSC classes to (2-character) simplified MSC classes
+        #And construct the simplified classifier based on it
+        assert os.path.exists(three_to_two_transform_path), f"[Error] {three_to_two_transform_path} does not exist."
+        self.__T=np.load(three_to_two_transform_path)
+        self.__clf_MSC_simplified=clf_reduction(self.__clf_MSC,self.__T,self.__clf_MSC_calibrated)
+            
         
         #Loading the vectorizer used to encode the data before training classifiers of MSC labels
         assert os.path.exists(vectorizer_path), f"[Error] {vectorizer_path} does not exist."
@@ -109,13 +123,16 @@ class math_classifier:
         
         #Loading the tokenizer used to encode the data before training the classifier of primary category
         assert os.path.exists(tokenizer_path), f"[Error] {tokenizer_path} does not exist."
-        with gzip.open(tokenizer_path,'rb') as file:
-            self.__tokenizer=pkl.load(file)
+        with open(tokenizer_path) as file:
+            self.__tokenizer=tokenizer_from_json(json.load(file))
         
-        #Loading the trained neural net classifier which outputs the probabilities for primary math categories
-        assert os.path.exists(clf_nn_path), f"[Error] {clf_nn_path} does not exist."
-        with gzip.open(clf_nn_path,'rb') as file:
-            self.__clf_nn=pkl.load(file)
+        #Loading one of the two trained neural net classifiers which outputs the probabilities for primary math categories
+        if use_transformer:
+            assert os.path.exists(clf_transformer_path), f"[Error] {clf_transformer_path} does not exist."
+            self.__clf_nn=LoadedTransformer(clf_transformer_path).transformer
+        else:
+            assert os.path.exists(clf_cnn_path), f"[Error] {clf_cnn_path} does not exist."
+            self.__clf_nn=keras.models.load_model(clf_cnn_path)
             
     ################################## END INIT ##########################################################    
     
