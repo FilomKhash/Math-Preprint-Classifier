@@ -1,11 +1,11 @@
 arxiv
-iterstrat==0.1.6
+iterative-stratification==0.1.6
 json
 gzip
 matplotlib
 nltk
-numpy
-pandas
+numpy==1.24.3
+pandas==2.0.3
 pickle
 PyPDF2==3.0.1
 scipy==1.11.1
