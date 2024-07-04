@@ -1,4 +1,4 @@
-## Math-Preprint-Classifier
+## Math-Preprint-Classifier (v2)
 
 End-to-end model for predicting the [MSC (Mathematical Subject Classification)](https://en.wikipedia.org/wiki/Mathematics_Subject_Classification) codes (as of [2020](https://mathscinet.ams.org/mathscinet/msc/msc2020.html)) and the primary [arXiv category](https://arxiv.org/category_taxonomy) for a preprint from a math archive or from the mathematical physics archive.
 
